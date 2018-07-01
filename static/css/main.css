@@ -1,0 +1,38 @@
+#notes-container {
+    margin: 0 50px;
+}
+
+.card {
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+    width: 20rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.card-title {
+    border-bottom: 1px solid black;
+    background-color: green;
+}
+
+.card-cat{
+    top: 0;
+    left: 0;
+    border-radius: 8px 0  0 0;
+    position: absolute;
+    background-color: #6AC5AC;
+    color: #414142;
+    line-height: 1em;
+}
+.delete-note{
+    cursor: pointer;
+        top: 0;
+    right: 10px;
+    position: absolute;
+    color: #414142;
+    line-height: 1em;
+}

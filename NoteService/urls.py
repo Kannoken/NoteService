@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^signup/$', core_views.signup, name='signup'),
     url(r'^logout/$', core_views.logout_user, name='logout'),
+    url(r'^login/$', core_views.login_user, name='login'),
     url(r'^newNote/', core_views.newNote, name='AddNote'),
     url(r'^deleteNote/', core_views.deleteNote, name='DeleteNote'),
     url(r'^note/(?P<note_id>[0-9a-z-]+)', core_views.noteView, name='DeleteNote'),

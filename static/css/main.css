@@ -1,5 +1,7 @@
 #notes-container {
     margin: 0 50px;
+position: relative;
+    overflow: hidden;
 }
 
 .card {
@@ -35,4 +37,24 @@
     position: absolute;
     color: #414142;
     line-height: 1em;
+}
+.form-container{
+    position: relative;
+    		clear: both;
+
+}
+#filter > label{
+      border-radius: 0 !important;
+    display: block;
+    border-left: 2px solid #FFBA75;
+    border-bottom: none;
+    padding: 0;
+    background: #fff;
+    position: static;;
+}
+#filter{
+float: left;
+		width: 300px;}
+a{
+    cursor: pointer;
 }

@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     <!-- Latest compiled and minified JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script src="{% static "js/main.js" %}"></script>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -34,9 +34,15 @@
 
                         <label>Заголовок</label>
                         <div id="newTitle">        {{ form.title }}</div>
-                        <div id="newTitle">        {{ form.text }}</div>
-                        <div id="newTitle">        {{ form.category }}</div>
-                        <div id="newTitle">        {{ form.mark }}</div>
+                        <label for="textnew">Описание</label>
+
+                        <div id="textnew">        {{ form.text }}</div>
+                        <label for="catnew">Категория</label>
+
+                        <div id="catnew">        {{ form.category }}</div>
+                        <label for="marknew">Избранная</label>
+
+                        <div id="marknew">        {{ form.mark }}</div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -49,29 +55,35 @@
     </div>
     {% if user.is_authenticated %}
         <p>Welcome {{ user.username }}</p>
-        <div id="notes-container">
-            <button type="button" class="btn btn-info btn-lg" id="newNote" data-toggle="modal" data-target="#myModal">
-                Open Modal
-            </button>
-            <button type="button" class="btn btn-info btn-lg" id="sortbycat">Сортировать по категории</button>
-            <button type="button" class="btn btn-info btn-lg" id="sortbyeject">Показать сначала избранные</button>
-        <form id="filter">
-            <label for="titlefilter"> Заголовок </label>
-            <input id="titlefilter">
-            <label for="catfilter">Категория</label>
-        <select id="catfilter">
-                        <option></option>
+                <a href="/logout/">Выйти</a>
 
-            {% for cat in category %}
-                <option>{{ cat }}</option>
-            {% endfor %}
-        </select>
-        <label for="datefilter">Дата</label>
-          <input type="date"  id="datefilter" >
-        <button type="button" id="findfilter">ОК</button>
-        </form>
+        <div class="form-container">
+            <form id="filter">
+                <label for="titlefilter"> Заголовок </label>
+                <input id="titlefilter">
+                <label for="catfilter">Категория</label>
+                <select id="catfilter">
+                    <option></option>
+
+                    {% for cat in category %}
+                        <option>{{ cat }}</option>
+                    {% endfor %}
+                </select>
+                <label for="datefilter">Дата</label>
+                <input type="date" id="datefilter">
+                <button type="button" id="findfilter">ОК</button>
+            </form>
+        </div>
+        <button type="button" class="btn btn-info btn-lg" id="newNote" data-toggle="modal" data-target="#myModal">
+            Создать новую заметку
+        </button>
+        <a id="sortbycat">Сортировать по категории</a>
+        <a id="sortbyeject">Показать сначала избранные</a>
+        <div id="notes-container">
+
+
             {% for note in notes %}
-                <div class="card">
+                <div id="{{ note.id }}" class="card">
 
                     <span class="card-cat">{{ note.category.name }}</span>
                     <span class="delete-note">&#10006;</span>
@@ -88,10 +100,9 @@
                 </div>
             {% endfor %}
         </div>
-        <a href="/logout/">Выйти</a>
 
     {% else %}
-        <a href="/signup">Зайди или зарегайся системе плез</a>
+        <a href="/signup">Зайдите или зарегистрируйтесь в системе</a>
     {% endif %}
 </div>
 </body>

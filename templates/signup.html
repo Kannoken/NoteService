@@ -2,7 +2,7 @@
   <h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
-    {% for field in form %}
+    {% for field in form1 %}
       <p>
         {{ field.label_tag }}<br>
         {{ field }}
@@ -16,12 +16,29 @@
     {% endfor %}
     <button type="submit">Sign up</button>
   </form>
+    <form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+<div>
+  <td>{{ form.username.label_tag }}</td>
+  <td>{{ form.username }}</td>
+</div>
+<div>
+  <td>{{ form.password.label_tag }}</td>
+  <td>{{ form.password }}</td>
+</div>
+
+<div>
+  <input type="submit" value="login" />
+</div>
+</form>
     {% else %}
-      <form method="post">
+      <form method="post" action="{% url 'logout' %}">
           {% csrf_token %}
 
-    <p>Хочешь выйти,  {{ user.username }}?</p>
+    <p>Хочешь выйти,  {{ user.username }}</p>
     <button>ВЫЙТИ</button>
       </form>
+
     {% endif %}
 

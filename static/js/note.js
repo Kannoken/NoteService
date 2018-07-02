@@ -1,12 +1,11 @@
     $(document).ready(function() {
 
         $('#noteInfo').submit(function () {
-// catch the form's submit event
-            $.ajax({ // create an AJAX call...
-                data: $(this).serialize(), // get the form data
-                type: "POST", // GET or POST
-                url: window.location.href, // the file to call
-                success: function (response) { // on success..
+            $.ajax({
+                data: $(this).serialize(),
+                type: "POST",
+                url: window.location.href,
+                success: function (response) {
                     console.log('OKS')
                 }
             });

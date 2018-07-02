@@ -8,3 +8,4 @@ class NewNoteForm(ModelForm):
         fields = ['title', 'text', 'category', 'mark', 'owner']
 
 
+

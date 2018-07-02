@@ -13,6 +13,9 @@ $(document).ready(function () {
             data: {'id': $(this).parent()[0].id},
             type: "POST",
             url: "/deleteNote/",
+            success: function (response) {
+                $('#'+$(self).parent()[0].id).remove()
+            }
         });
     });
     $('#sortbycat').click(function () {
